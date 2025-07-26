@@ -1,0 +1,55 @@
+  <!-- ======= Footer ======= -->
+<footer id="footer" class="footer mt-5 py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="copyright">
+                    &copy; <span id="current-year">2025</span> 
+                    <strong><span>Online News Portal System</span></strong> - 
+                    <span>Powered by Python (Django)</span>
+                </div>
+                <div class="mt-2">
+                    <a href="#" class="text-muted me-3">Privacy Policy</a>
+                    <span class="text-muted">|</span>
+                    <a href="#" class="text-muted mx-3">Terms of Service</a>
+                    <span class="text-muted">|</span>
+                    <a href="{% url 'contactus' %}" class="text-muted ms-3">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+.footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.footer strong {
+    color: #212529;
+    font-weight: 600;
+}
+
+.footer .container {
+    padding: 1rem 0;
+}
+</style>
+
+<script>
+    // Update copyright year dynamically
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>

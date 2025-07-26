@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="pagetitle">
+      <h1>Update Website Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item">Update Website Details</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12" style="padding-left: 100px;padding-right: 100px;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Update Website Details</h5>
+              
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.tags == 'error' %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.tags == 'success' %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              
+              <!-- Vertical Form -->
+              <form method="POST" action="" enctype="multipart/form-data" class="row g-3">
+                {% csrf_token %}
+                {% if page %}
+                  <div class="row mb-3">
+                    <label for="pagetitle" class="col-sm-2 col-form-label">Page Title</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="pagetitle" name="pagetitle" value="{{ page.pagetitle }}" required>
+                      <input type="hidden" name="web_id" value="{{ page.id }}">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="address" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="address" name="address" rows="3" required>{{ page.address }}</textarea>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="aboutus" class="col-sm-2 col-form-label">About Us</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="aboutus" name="aboutus" rows="12" required>{{ page.aboutus }}</textarea>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="mobilenumber" class="col-sm-2 col-form-label">Mobile Number</label>
+                    <div class="col-sm-10">
+                      <input type="tel" class="form-control" id="mobilenumber" name="mobilenumber" 
+                             pattern="^(\+255|0)[0-9]{9}$" 
+                             title="Please enter a valid Tanzanian phone number starting with +255 or 0 followed by 9 digits" 
+                             value="{{ page.mobilenumber }}" required>
+                      <small class="form-text text-muted">Format: +255XXXXXXXXX or 0XXXXXXXXX</small>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="email" name="email" value="{{ page.email }}" required>
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="alert alert-warning">No website details found. Please contact the administrator.</div>
+                {% endif %}
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Update Details</button>
+                </div>
+              </form><!-- End Vertical Form -->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Auto-dismiss alerts after 5 seconds
+        setTimeout(function() {
+            $('.alert').fadeOut('slow');
+        }, 5000);
+        
+        // Handle form submission
+        $('form').on('submit', function() {
+            $('button[type="submit"]').prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Updating...');
+        });
+    });
+    </script>
+{% endblock %}

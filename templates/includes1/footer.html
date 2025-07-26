@@ -1,0 +1,60 @@
+{% load static %}
+<footer>
+    <!-- Footer Start-->
+    <div class="footer-area footer-padding">
+        <div class="container">
+            <div class="row d-flex justify-content-between">
+                <div class="col-xl-12">
+                    <div class="single-footer-caption mb-50 text-center">
+                        <div class="footer-tittle">
+                            <div class="footer-pera">
+                                <p> <span id="current-year">2025</span> <strong>Online News Portal</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer End-->
+
+<style>
+.footer-area {
+    background: #f8f9fa;
+    padding: 20px 0;
+    margin-top: 50px;
+    border-top: 1px solid #e9ecef;
+}
+
+.footer-pera p {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.footer-pera strong {
+    color: #212529;
+    font-weight: 600;
+}
+
+.footer-tittle {
+    margin-bottom: 0;
+}
+</style>
+
+<script>
+    // Update copyright year dynamically
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Search model Begin -->
+<div class="search-model-box">
+    <div class="d-flex align-items-center h-100 justify-content-center">
+        <div class="search-close-btn">+</div>
+        <form class="search-model-form"  method="get" action="">
+            <input type="text" id="search-input" name="q" placeholder="Search by title or category">  <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<!-- Search model end -->
